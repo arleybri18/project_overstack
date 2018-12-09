@@ -1,0 +1,5 @@
+<%= form_for @question do |f|%>
+<%= f.text_field :topic, placeholder:"Pregunta"%>
+<%= f.text_area :description, placeholder: "Ingresa aquí el detalle de tu pregunta"%>
+<%= f.submit 'Publicar'%>
+<% end %>
