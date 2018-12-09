@@ -1,0 +1,13 @@
+<ul>
+    <% @questions.each do |question|%>
+    <li>
+        <h1>
+            <%=link_to question.topic, question_path(question)%>
+        </h1>
+        <p>
+            <h5>Aqui va quien la publico</h5>
+        </p>
+    </li>
+
+    <% end %>
+</ul>
