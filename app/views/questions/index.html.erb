@@ -4,9 +4,11 @@
         <h1>
             <%=link_to question.topic, question_path(question)%>
         </h1>
+        <div><%= link_to 'Eliminar', question,method: :delete %></div>
         <p>
             <h5>Aqui va quien la publico <%=question.created_at%></h5>
         </p>
+        
     </li>
 
     <% end %>
