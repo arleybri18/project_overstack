@@ -1,0 +1,14 @@
+  
+
+<nav class="h4 navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">F_OverStack</a>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+        <%= link_to 'Home', root_path, class:"nav-item nav-link" %>
+        <span>|</span>
+        <%= link_to 'Publicar', new_question_path,class:"nav-item nav-link"%>
+        <span>|</span>
+        <%= link_to "Salir", logout_path, method: :delete, class:"nav-item nav-link" %>
+    </div>
+  </div>
+</nav>

@@ -12,15 +12,21 @@
 </head>
 
 <body>
+  <div class="container">
 
-<% if signed_in? %>
-  <div>Hola <%= current_user.name %> <%= link_to "Salir", logout_path, method: :delete %></div>
-  <% else%>
-  <div><%= link_to 'Ingresar', login_path %>
-  </div>
-<% end %>
+    <% if signed_in? %>
+    <%= render partial: 'layouts/registered_nav' %>
+    <div>Hola
+      <%= current_user.name %>
 
-  <%= yield %>
+      <% else%>
+      <%= render partial: 'layouts/unregistered_nav' %>
+
+      <% end %>
+
+
+      <%= yield %>
+    </div>
 </body>
 
 </html>
