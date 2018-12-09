@@ -8,15 +8,17 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 </head>
 
 <body>
 
-  <% if signed_in? %>
-  <div>Hola
-    <%= current_user.name %>
+<% if signed_in? %>
+  <div>Hola <%= current_user.name %> <%= link_to "Salir", logout_path, method: :delete %></div>
+  <% else%>
+  <div><%= link_to 'Ingresar', login_path %>
   </div>
-  <% end %>
+<% end %>
 
   <%= yield %>
 </body>
