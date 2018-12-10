@@ -1,3 +1,17 @@
 // Place all the styles related to the questions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.actions {
+    margin-top: 30px;
+
+    a {
+        color: #ccc;
+        font-size: 21px;
+        margin-right: 5px;
+
+        &:hover {
+            color: white;
+        }
+    }
+}
