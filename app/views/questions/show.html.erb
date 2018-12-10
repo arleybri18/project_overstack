@@ -1,3 +1,5 @@
 <h1><%=@question.topic%></h1>
 <p><%=@question.description%></p>
+ <% if signed_in? %>
 <%= link_to 'Editar', edit_question_path(@question) %>
+<% end %>

@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class QuestionsController < ApplicationController
+
+  before_action :private_access, except: [:index, :show]
+
+  
   def index
     @questions = Question.all
   end
