@@ -2,6 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.question-comments {
+    float: right;
+    color: #ccc;
+    padding: 10px;
+
+    .glyphicon {
+        font-size: 21px;
+    }
+
+    .comment-count {
+        margin-left: 15px;
+        font-size: 18px;
+        vertical-align: text-bottom;
+    }
+}
+
 .actions {
     margin-top: 30px;
 
