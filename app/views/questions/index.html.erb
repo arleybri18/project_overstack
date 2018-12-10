@@ -5,9 +5,15 @@
         <div class="d-inline">
             <%=link_to question.topic, question_path(question)%>
         </div>
+
+        <div class="question-comments">
+  <span class="glyphicon glyphicon-comment"></span>
+  <span class="comment-count"><%= question.comments.count %></span>
+</div>
+
         <% if signed_in? %>
         <div  class="d-inline">
-            <%= link_to 'Eliminar', question,method: :delete, data: { confirm: "¿Estás seguro de eliminar este producto?" } , class:"btn btn-primary" %>
+            <%= link_to 'Eliminar', question,method: :delete, data: { confirm: "¿Estás seguro de eliminar este questiono?" } , class:"btn btn-primary" %>
         </div>
         <% end %>
     </div>

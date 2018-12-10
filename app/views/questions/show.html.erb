@@ -7,5 +7,24 @@
 <% if signed_in? && @question.user == current_user %>
 <div class="actions">
     <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_question_path(@question) %>
-    <%= link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, @question, method: :delete, data: { confirm: "¿Estás seguro de eliminar este producto?" } %>
-</div> <% end %>    
+    <%= link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, @question, method: :delete, data: { confirm: "¿Estás seguro de eliminar este questiono?" } %>
+</div> <% end %>
+
+<% @question.comments.each do |comment| %>
+  <div class="panel panel-default">
+    <header class="panel-heading"><%= comment.user.name %></header>
+    <div class="panel-body"><%= comment.body %></div>
+  </div>
+<% end %>
+
+<% if signed_in? %>
+  <%= form_for [@question, @question.comments.build] do |f| %>
+    <div class="form-group">
+      <%= f.text_area :body, class: "form-control", placeholder: "Agregar comentario" %>
+    </div>
+
+    <div class="actions text-right">
+      <%= f.submit "Comentar", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+<% end %>
