@@ -10,4 +10,6 @@
 #
 
 class Question < ApplicationRecord
+    validates :topic, presence: true
+    validates :description, presence: true
 end
