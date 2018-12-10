@@ -1,5 +1,15 @@
-<%= form_for @question do |f|%>
-<%= f.text_field :topic, placeholder:"Pregunta"%>
-<%= f.text_area :description, placeholder: "Ingresa aquí el detalle de tu pregunta"%>
+<% if @question.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+    <% @question.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= bootstrap_form_for @question do |f|%>
+<%= f.text_field :topic, label: "Cual es tu pregunta?:"%>
+<%= f.text_area :description, label: "Ingresa aquí el detalle de tu pregunta:",label_as_placeholder: true%>
 <%= f.submit 'Publicar'%>
 <% end %>
