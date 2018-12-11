@@ -1,19 +1,26 @@
+<div class="d-flex justify-content-between">
+<div>
 <h1>
     <%=@question.topic%>
 </h1>
-<p>
-    <%=@question.description%>
-</p>
+</div>
 <% if signed_in? && @question.user == current_user %>
 <div class="actions">
-    <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_question_path(@question) %>
-    <%= link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, @question, method: :delete, data: { confirm: "¿Estás seguro de eliminar este questiono?" } %>
-</div> <% end %>
+    <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_question_path(@question),class:"h5"%>
+    <%= link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, @question, method: :delete, data: { confirm: "¿Estás seguro de eliminar este questiono?" },class:"h5" %>
+</div> 
+<% end %>
+</div>
+<p class="h4">
+    <%=@question.description%>
+</p>
+
 
 <% @question.comments.each do |comment| %>
   <div class="panel panel-default">
-    <header class="panel-heading"><%= comment.user.name %></header>
+    
     <div class="panel-body"><%= comment.body %></div>
+  <footer class="panel-footer">Usuario: <%= comment.user.name %>  email: <%=comment.user.email%></footer>
   </div>
 <% end %>
 
