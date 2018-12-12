@@ -1,28 +1,43 @@
-<% @questions.each do |question|%>
-<div class="card">
-<div class="col-sm-8">
-    <div class="card-title">
-        <div class="d-inline">
-            <%=link_to question.topic, question_path(question)%>
+<!-- List of Questions -->
+
+<!-- votes -->
+<div class="row mt-3">
+    <div class="col-md-12 ">
+
+        <!-- Questions  -->
+        <% @questions.each do |question|%>
+
+        <div class="row mt-3 d-flex flex-wrap">
+            <div class="col-md-3 d-flex justify-content-around text-center align-middle border-bottom">
+                <div>
+                    <h2>0</h2>
+                    <p>Votos</p>
+                </div>
+                <div>
+                    <h2>0</h2>
+                    <p>Respuestas</p>
+                </div>
+            </div>
+
+            <div class="col-md-9 blog-post border-bottom">
+                <h2 class="blog-post-title">
+                    <%=link_to question.topic, question_path(question)%>
+                </h2>
+
+                <p>
+                    <%=question.description%>
+                </p>
+                <p class="blog-post-meta">
+                    <%=question.created_at%> by <a href="<%=question.user.email%>">
+                        <%=question.user.name%></a>
+                </p>
+
+            </div>
         </div>
 
-        <div class="question-comments">
-  <span class="glyphicon glyphicon-comment"></span>
-  <span class="comment-count"><%= question.comments.count %></span>
-</div>
 
-        <% if signed_in? %>
-        <div  class="d-inline">
-            <%= link_to 'Eliminar', question,method: :delete, data: { confirm: "¿Estás seguro de eliminar este questiono?" } , class:"btn btn-primary" %>
-        </div>
+
         <% end %>
     </div>
-    <div class="card-body">
 
-        <p class="card-text">Aqui va quien la publico
-            <%=question.created_at%>
-        </p>
-    </div>
 </div>
-</div>
-<% end %>
