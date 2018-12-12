@@ -33,17 +33,17 @@
     <% @question.comments.each do |comment| %>
     <div class="panel panel-default mt-3">
 
-      <div class="panel-body">
+      <div class="panel-body h4">
         <%= comment.body %>
       </div>
-      <footer class="panel-footer">Usuario:
+      <footer class="panel-footer mt-2 h6  text-muted">Usuario:
         <%= comment.user.name %> email:
         <%=comment.user.email%>
       </footer>
     </div>
     <% end %>
 
-    <div class="d-inline-flex justify-content-end">
+    <div class="mt-3">
       <% if signed_in? %>
       <%= form_for [@question, @question.comments.build] do |f| %>
       <div class="form-group">
