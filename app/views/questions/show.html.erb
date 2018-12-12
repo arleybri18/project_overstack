@@ -1,37 +1,61 @@
+<div class="row">
+<div class="col-md">
+
 <div class="d-flex justify-content-between">
-<div>
-<h1>
-    <%=@question.topic%>
-</h1>
-</div>
-<% if signed_in? && @question.user == current_user %>
-<div class="actions">
-    <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_question_path(@question),class:"h5"%>
-    <%= link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, @question, method: :delete, data: { confirm: "¿Estás seguro de eliminar este questiono?" },class:"h5" %>
-</div> 
-<% end %>
-</div>
-<p class="h4">
-    <%=@question.description%>
-</p>
-
-
-<% @question.comments.each do |comment| %>
-  <div class="panel panel-default">
-    
-    <div class="panel-body"><%= comment.body %></div>
-  <footer class="panel-footer">Usuario: <%= comment.user.name %>  email: <%=comment.user.email%></footer>
+  <div>
+    <h1>
+      <%=@question.topic%>
+    </h1>
   </div>
-<% end %>
-
-<% if signed_in? %>
-  <%= form_for [@question, @question.comments.build] do |f| %>
-    <div class="form-group">
-      <%= f.text_area :body, class: "form-control", placeholder: "Agregar comentario" %>
-    </div>
-
-    <div class="actions text-right">
-      <%= f.submit "Comentar", class: "btn btn-primary" %>
-    </div>
+  <% if signed_in? && @question.user == current_user %>
+  <div class="actions">
+    <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_question_path(@question),class:"h5"%>
+    <%= link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, @question, method: :delete, data: { confirm: "¿Estás seguro de eliminar esta pregunta?" },class:"h5" %>
+  </div>
   <% end %>
+
+
+</div>
+
+<div>
+<p class="h4">
+  <%=@question.description%>
+</p>
+</div>
+
+</div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-10">
+
+    <% @question.comments.each do |comment| %>
+    <div class="panel panel-default mt-3">
+
+      <div class="panel-body">
+        <%= comment.body %>
+      </div>
+      <footer class="panel-footer">Usuario:
+        <%= comment.user.name %> email:
+        <%=comment.user.email%>
+      </footer>
+    </div>
+    <% end %>
+
+    <div class="d-inline-flex justify-content-end">
+      <% if signed_in? %>
+      <%= form_for [@question, @question.comments.build] do |f| %>
+      <div class="form-group">
+        <%= f.text_area :body, class: "form-control", placeholder: "Agregar comentario" %>
+      </div>
+
+      <div class="actions text-right">
+        <%= f.submit "Comentar", class: "btn btn-primary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 <% end %>
