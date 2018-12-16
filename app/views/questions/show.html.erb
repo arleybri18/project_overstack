@@ -28,6 +28,7 @@
 </div>
 
 <div class="row">
+<%# show comments %>
   <div class="col-md-10">
 
     <% @question.comments.each do |comment| %>
@@ -58,6 +59,26 @@
       </div>
       <% end %>
     </div>
+  </div>
+</div>
+
+<div class="row">
+<%# Show Answers %>
+  <div class="col-md-10">
+
+    <% @question.answers.each do |answer| %>
+    <div class="panel panel-default mt-3">
+
+      <div class="panel-body h4">
+        <%= answer.text %>
+      </div>
+      <footer class="panel-footer mt-2 h6  text-muted">
+      Usuario: <%= answer.user.name %>
+      email:   <%= answer.user.email%>
+      </footer>
+    </div>
+    <% end %>
+
   </div>
 </div>
 
