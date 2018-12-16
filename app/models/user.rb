@@ -11,10 +11,13 @@
 #
 
 class User < ApplicationRecord
+    #Metodo para manejo de password
     has_secure_password validations: false
+    #Relacion uno a muchos con los modelos de questions y comments 
     has_many :questions
-    has_many :comments, as: :commentable
+    has_many :comments
     
+    #Validaciones
     validates :email, uniqueness: true, format: /@/
     validates :password, presence: true, on: :create
     validates :password, length: { in: 6..20 }, allow_nil: true

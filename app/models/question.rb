@@ -11,8 +11,12 @@
 #
 
 class Question < ApplicationRecord
+    #Relacion con modelo User
     belongs_to :user
+    #Relacion poliformica con comentarios
     has_many :comments, as: :commentable
+
+    #Validaciones
     validates :topic, presence: true
     validates :description, presence: true
 end

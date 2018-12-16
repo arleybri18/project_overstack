@@ -12,6 +12,9 @@
 #
 
 class Comment < ApplicationRecord
+  #Relacion poliformica
   belongs_to :commentable, polymorphic: true
+  #Relacion con modelo User
+  belongs_to :user
  
 end

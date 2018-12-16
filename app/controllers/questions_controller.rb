@@ -19,6 +19,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
+    #obtener el usuario actual de la pregunta
     @question.user = current_user
 
     if @question.save
