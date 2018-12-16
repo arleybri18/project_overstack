@@ -36,9 +36,9 @@
       <div class="panel-body h4">
         <%= comment.body %>
       </div>
-      <footer class="panel-footer mt-2 h6  text-muted">Usuario:
-        <%= comment.user.name %> email:
-        <%=comment.user.email%>
+      <footer class="panel-footer mt-2 h6  text-muted">
+      Usuario: <%= comment.user.name %>
+      email:   <%= comment.user.email%>
       </footer>
     </div>
     <% end %>
@@ -46,6 +46,9 @@
     <div class="mt-3">
       <% if signed_in? %>
       <%= form_for [@question, @question.comments.build] do |f| %>
+      <%# se declaran campos ocultos para enviar los datos de la relacion poliformica %>
+      <%= f.hidden_field :commentable_id%>
+      <%= f.hidden_field :commentable_type%>
       <div class="form-group">
         <%= f.text_area :body, class: "form-control", placeholder: "Agregar comentario" %>
       </div>
