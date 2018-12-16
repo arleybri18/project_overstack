@@ -12,7 +12,7 @@
 
 class Question < ApplicationRecord
     belongs_to :user
-    has_many :comments
+    has_many :comments, as: :commentable
     validates :topic, presence: true
     validates :description, presence: true
 end
